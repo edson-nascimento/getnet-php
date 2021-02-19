@@ -162,7 +162,8 @@ class Request {
         // Status code 204 don't have content. That means $response will be always false
         // Provides a custom content for $response to avoid error in the next if logic
         if (curl_getinfo($curl, CURLINFO_HTTP_CODE) == 204) {
-            $response = ['status_code' => 204];
+            curl_close($curl);
+            return ['status_code' => 204];
         }
 
         if (! $response) {
