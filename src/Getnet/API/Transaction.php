@@ -36,6 +36,8 @@ class Transaction {
 
     private $boleto;
 
+    private $pix;
+
     
     /**
      *
@@ -319,6 +321,33 @@ class Transaction {
     public function setBoleto(Boleto $boleto) {
         $this->boleto = $boleto;
         
+        return $this;
+    }
+
+
+    /**
+     *
+     * @param $amount
+     * @return Pix
+     */
+    public function pix($amount) {
+        $pix = new Pix($amount);
+        $this->pix = $pix;
+        return $pix;
+    }
+    
+    /**
+     * @return Pix
+     */
+    public function getPix() {
+        return $this->pix;
+    }
+
+    /**
+     * @param Boleto $boleto
+     */
+    public function setPix(Pix $pix) {
+        $this->pix = $pix;
         return $this;
     }
 

@@ -10,11 +10,11 @@ Todos os passos e processos referentes à integração com o sistema de captura 
 
 add composer.json
 ```
-"edson-nascimento/getnet-php": "^1.0"
+"smartdata-co/getnet-php": "^1.1"
 ```
 ou execute
 ```
-$ composer require edson-nascimento/getnet-php
+$ composer require smartdata-co/getnet-php
 ```
 #### Exemplo Autorização com cartão de crédito MasterCard R$27,50 em 2x 
 

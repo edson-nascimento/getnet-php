@@ -1,5 +1,5 @@
 {
-  "name": "edson-nascimento/getnet-php",
+  "name": "smartdata-co/getnet-php",
   "description": "SDK php para integração com a API Getnet",
   "minimum-stability": "stable",
   "license": "MIT",
@@ -20,7 +20,11 @@
     {
       "name": "Edson Nascimento",
       "email": "edson27bn@gmail.com"
+    },
+    {
+      "name": "Iuri Andreazza",
+      "email": "iuri@smartdata.science"
     }
   ],
-  "homepage": "https://github.com/edson-nascimento/getnet-php"
+  "homepage": "https://github.com/smartdata-co/getnet-php"
 }
