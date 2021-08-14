@@ -21,6 +21,7 @@ class PixRespose extends BaseResponse {
     public function getAditionalData() {
         return $this->additional_data;
     }
+
 }
 
 class PixAditionalDataResponse {

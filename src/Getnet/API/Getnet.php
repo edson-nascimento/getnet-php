@@ -264,8 +264,13 @@ class Getnet {
         try {
             $request = new Request($this);
             $response = $request->post($this, "/v1/payments/boleto", $transaction->toJSON());
-            if ($this->debug)
-                print $transaction->toJSON();
+            
+            $boletoresponse = new BoletoRespose();
+            $boletoresponse->mapperJson($response);
+            $boletoresponse->setBaseUrl($request->getBaseUrl());
+            $boletoresponse->generateLinks();
+    
+            return $boletoresponse;
         } catch (\Exception $e) {
 
             $error = new BaseResponse();
@@ -273,13 +278,6 @@ class Getnet {
 
             return $error;
         }
-        
-        $boletoresponse = new BoletoRespose();
-        $boletoresponse->mapperJson($response);
-        $boletoresponse->setBaseUrl($request->getBaseUrl());
-        $boletoresponse->generateLinks();
-
-        return $boletoresponse;
     }
 
     /**
@@ -291,21 +289,19 @@ class Getnet {
         try {
             $request = new Request($this);
             $response = $request->post($this, "/v1/payments/qrcode/pix", $transaction->toJSON());
-            if ($this->debug)
-                print $transaction->toJSON();
-        } catch (\Exception $e) {
 
+            $pixresponse = new PixResponse();
+            $pixresponse->mapperJson($response);
+            // $pixresponse->setBaseUrl($request->getBaseUrl());
+            // $pixresponse->generateImage();
+
+        } catch (\Exception $e) {
             $error = new PixResponse();
             $error->mapperJson(json_decode($e->getMessage(), true));
-
             return $error;
         }
         
-        $pixresponse = new PixResponse();
-        $pixresponse->mapperJson($response);
-        $pixresponse->setBaseUrl($request->getBaseUrl());
-        $pixresponse->generateLinks();
-
+        
         return $pixresponse;
     }
 
