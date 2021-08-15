@@ -10,7 +10,7 @@ class Boleto implements \JsonSerializable {
     
     const PROVIDER_SANTANDER = "santander";
 
-    private $our_number;
+    // private $our_number;
 
     private $document_number;
 
@@ -27,7 +27,10 @@ class Boleto implements \JsonSerializable {
      *            $our_number
      */
     public function __construct($our_number = null) {
-        $this->our_number = $our_number;
+        // our_number eh opcional na api
+        if( $our_number != null ){
+            $this->our_number = $our_number;
+        }
     }
 
     public function jsonSerialize() {
