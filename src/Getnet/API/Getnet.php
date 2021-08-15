@@ -288,7 +288,12 @@ class Getnet {
     public function pix(Transaction $transaction) {
         try {
             $request = new Request($this);
-            $response = $request->post($this, "/v1/payments/qrcode/pix", $transaction->toJSON());
+            $response = $request->post($this, "/v1/payments/qrcode/pix", json_encode([
+                "amount" => $transaction->getAmount(),
+                "currency" => $transaction->getCurrency(),
+                "order_id" => $transaction->getOrder()->getOrderId(),
+                "customer_id" => $transaction->getCustomer()->getCustomerId(),
+            ]));
 
             $pixresponse = new PixResponse();
             $pixresponse->mapperJson($response);

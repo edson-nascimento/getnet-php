@@ -330,8 +330,8 @@ class Transaction {
      * @param $amount
      * @return Pix
      */
-    public function pix($amount) {
-        $pix = new Pix($amount);
+    public function pix() {
+        $pix = new Pix();
         $this->pix = $pix;
         return $pix;
     }
