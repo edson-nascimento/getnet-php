@@ -2,11 +2,11 @@
 namespace Getnet\API;
 
 /**
- * Class PixRespose
+ * Class PixResponse
  *
  * @package Getnet\API
  */
-class PixRespose extends BaseResponse {
+class PixResponse extends BaseResponse {
 
     public $additional_data;
 
