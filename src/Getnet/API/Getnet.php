@@ -264,7 +264,7 @@ class Getnet {
         try {
             $request = new Request($this);
             $response = $request->post($this, "/v1/payments/boleto", $transaction->toJSON());
-            if ($this->debug)
+            if (isset($this->debug))
                 print $transaction->toJSON();
         } catch (\Exception $e) {
 
