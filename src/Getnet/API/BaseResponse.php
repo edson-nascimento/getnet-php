@@ -10,7 +10,7 @@ class BaseResponse implements \JsonSerializable {
 
     public $payment_id;
 
-    public $seller_id;
+    // public $seller_id;
 
     public $amount;
 
