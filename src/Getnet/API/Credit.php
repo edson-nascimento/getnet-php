@@ -20,6 +20,14 @@ class Credit implements \JsonSerializable
     // Pagamento parcelado com juros
     const TRANSACTION_TYPE_INSTALL_WITH_INTEREST = "INSTALL_WITH_INTEREST";
 
+    const ONE_CLICK = 'ONE_CLICK';
+
+    const ONE_CLICK_PAYMENT = 'ONE_CLICK_PAYMENT';
+
+    const RECURRING = 'RECURRING';
+
+    const RECURRING_PAYMENT = 'RECURRING_PAYMENT';
+
     private $authenticated;
 
     private $delayed;
@@ -273,6 +281,11 @@ class Credit implements \JsonSerializable
      */
     public function setCredentialsOnFileType($credentials_on_file_type)
     {
+        if (!in_array($credentials_on_file_type, [
+            static::ONE_CLICK, static::ONE_CLICK_PAYMENT, static::RECURRING, static::RECURRING_PAYMENT
+        ]))
+            throw new \Exception('Escolha uma forma de recorrência válida');
+
         $this->credentials_on_file_type = $credentials_on_file_type;
 
         return $this;
@@ -293,7 +306,7 @@ class Credit implements \JsonSerializable
      */
     public function setTransactionId($transaction_id)
     {
-        $this->transaction_id = $transaction_id;
+        $this->transaction_id = (string) $transaction_id;
 
         return $this;
     }
