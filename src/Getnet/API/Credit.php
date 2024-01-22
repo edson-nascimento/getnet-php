@@ -1,4 +1,5 @@
 <?php
+
 namespace Getnet\API;
 
 /**
@@ -38,6 +39,10 @@ class Credit implements \JsonSerializable
     private $card;
 
     private $cardholder_mobile;
+
+    private $credentials_on_file_type;
+
+    private $transaction_id;
 
     /**
      *
@@ -249,6 +254,46 @@ class Credit implements \JsonSerializable
     public function setCardholderMobile($cardholder_mobile)
     {
         $this->cardholder_mobile = (string) $cardholder_mobile;
+
+        return $this;
+    }
+
+    /**
+     *
+     * @return mixed
+     */
+    public function getCredentialsOnFileType()
+    {
+        return $this->credentials_on_file_type;
+    }
+
+    /**
+     *
+     * @param mixed $credentials_on_file_type
+     */
+    public function setCredentialsOnFileType($credentials_on_file_type)
+    {
+        $this->credentials_on_file_type = $credentials_on_file_type;
+
+        return $this;
+    }
+
+    /**
+     *
+     * @return mixed
+     */
+    public function getTransactionId()
+    {
+        return $this->transaction_id;
+    }
+
+    /**
+     *
+     * @param mixed $transaction_id
+     */
+    public function setTransactionId($transaction_id)
+    {
+        $this->transaction_id = $transaction_id;
 
         return $this;
     }
