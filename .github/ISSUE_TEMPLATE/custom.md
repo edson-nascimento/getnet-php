@@ -1,24 +1,11 @@
 ---
-name: Bug report
-about: Crie um relatório para nos ajudar a melhorar
+name: Custom issue template
+about: Descreva aqui sua sugestão
 title: ''
 labels: ''
 assignees: ''
 
 ---
-
-<!-- 
-Por favor, preencha as informações abaixo para que possamos ajudar da melhor forma.
--->
-
-## Descrição do Problema
-
-<!-- Descreva de forma clara o bug que você encontrou. -->
-
-## Passos para Reproduzir
-
-1. **Etapa 1:** <!-- Detalhe os passos necessários para reproduzir o bug. -->
-2. **Etapa 2:** <!-- Continue descrevendo os passos até reproduzir o problema. -->
 
 ## Comportamento Esperado
 
