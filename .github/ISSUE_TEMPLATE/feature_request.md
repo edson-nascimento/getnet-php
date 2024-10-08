@@ -1,16 +1,3 @@
----
-name: Feature request
-about: Sugira uma ideia ou recurso para este projeto
-title: ''
-labels: ''
-assignees: ''
-
----
-
-<!-- 
-Obrigado por sugerir um novo recurso! Por favor, preencha as informações abaixo para facilitar nossa análise.
--->
-
 ## Descrição do Recurso
 
 <!-- Descreva de forma clara a funcionalidade que você gostaria de ver implementada. -->

@@ -1,19 +1,10 @@
----
-name: Custom issue template
-about: Descreva aqui sua sugestão
-title: ''
-labels: ''
-assignees: ''
+## Descrição do Recurso
 
----
+<!-- Descreva de forma clara a funcionalidade que você gostaria de ver implementada. -->
 
-## Comportamento Esperado
+## Caso de Uso
 
-<!-- Explique o que você esperava que acontecesse. -->
-
-## Comportamento Observado
-
-<!-- Descreva o que realmente aconteceu. Se possível, inclua mensagens de erro, logs ou capturas de tela. -->
+<!-- Explique o problema que este recurso resolveria ou o caso de uso para o qual ele seria útil. -->
 
 ## Ambiente
 
@@ -27,10 +18,6 @@ assignees: ''
 
 <!-- Adicione logs ou prints relevantes para ajudar a diagnosticar o problema. -->
 
-## Possíveis Soluções (opcional)
-
-<!-- Se você tiver alguma ideia sobre como resolver o problema, descreva aqui. -->
-
 ## Informação Adicional
 
-<!-- Qualquer outra informação útil que possa ajudar a resolver o bug. -->
+<!-- Qualquer informação extra que possa ajudar na avaliação do recurso. -->

@@ -1,16 +1,3 @@
----
-name: Bug report
-about: Crie um relatório para nos ajudar a melhorar
-title: ''
-labels: ''
-assignees: ''
-
----
-
-<!-- 
-Por favor, preencha as informações abaixo para que possamos ajudar da melhor forma.
--->
-
 ## Descrição do Problema
 
 <!-- Descreva de forma clara o bug que você encontrou. -->
