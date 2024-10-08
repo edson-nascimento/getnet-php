@@ -1,3 +1,11 @@
+---
+name: Custom issue template
+about: Descreva aqui sua sugestão
+title: ''
+labels: ''
+assignees: ''
+---
+
 ## Descrição do Recurso
 
 <!-- Descreva de forma clara a funcionalidade que você gostaria de ver implementada. -->

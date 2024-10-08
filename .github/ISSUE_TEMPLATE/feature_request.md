@@ -1,3 +1,11 @@
+---
+name: Feature request
+about: Sugira uma ideia ou recurso para este projeto
+title: ''
+labels: ''
+assignees: ''
+---
+
 ## Descrição do Recurso
 
 <!-- Descreva de forma clara a funcionalidade que você gostaria de ver implementada. -->
