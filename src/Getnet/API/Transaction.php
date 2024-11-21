@@ -15,7 +15,7 @@ class Transaction implements \JsonSerializable
     const STATUS_CONFIRMED = "CONFIRMED";
 
     const STATUS_PENDING = "PENDING";
-    
+
     const STATUS_WAITING = "WAITING";
 
     const STATUS_APPROVED = "APPROVED";
@@ -45,6 +45,8 @@ class Transaction implements \JsonSerializable
     private $debit;
 
     private $boleto;
+
+    private $tokenization;
 
     /**
      *
@@ -361,6 +363,38 @@ class Transaction implements \JsonSerializable
     public function setBoleto(Boleto $boleto)
     {
         $this->boleto = $boleto;
+
+        return $this;
+    }
+
+    /**
+     *
+     * @return Tokenization
+     */
+    public function tokenization()
+    {
+        $tokenization = new Tokenization();
+        $this->setTokenization($tokenization);
+
+        return $tokenization;
+    }
+
+    /**
+     *
+     * @return Tokenization|null
+     */
+    public function getTokenization()
+    {
+        return $this->tokenization;
+    }
+
+    /**
+     *
+     * @param Tokenization $tokenization
+     */
+    public function setTokenization(Tokenization $tokenization)
+    {
+        $this->tokenization = $tokenization;
 
         return $this;
     }
