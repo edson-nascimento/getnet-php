@@ -337,7 +337,7 @@ print_r($response['customers']);
 ```
 
 #### TOCKENIZAÇÃO DE BANDEIRA
-[Documentação sobre Tokenização](docs/tokenizacao.md)
+[Documentação sobre Tokenização](docs/tockenizacao.md)
 
 ### Possíveis status de resposta de uma transação
 |Status|Descrição|
