@@ -336,6 +336,9 @@ $response = $getnet->customRequest('GET', '/v1/customers?page=1&limit=5');
 print_r($response['customers']);
 ```
 
+#### TOCKENIZAÇÃO DE BANDEIRA
+[Documentação sobre Tokenização](docs/tockenizacao.md)
+
 ### Possíveis status de resposta de uma transação
 |Status|Descrição|
 | ------- | --------- |
