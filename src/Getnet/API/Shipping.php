@@ -1,11 +1,7 @@
 <?php
+
 namespace Getnet\API;
 
-/**
- * Class Shipping
- *
- * @package Getnet\API
- */
 class Shipping implements \JsonSerializable
 {
     use TraitEntity;
@@ -22,19 +18,11 @@ class Shipping implements \JsonSerializable
 
     private $address;
 
-    /**
-     *
-     * @return mixed
-     */
     public function getFirstName()
     {
         return $this->first_name;
     }
 
-    /**
-     *
-     * @param mixed $first_name
-     */
     public function setFirstName($first_name)
     {
         $this->first_name = (string) $first_name;
@@ -42,19 +30,11 @@ class Shipping implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     *
-     * @param mixed $name
-     */
     public function setName($name)
     {
         $this->name = (string) $name;
@@ -62,19 +42,11 @@ class Shipping implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getEmail()
     {
         return $this->email;
     }
 
-    /**
-     *
-     * @param mixed $email
-     */
     public function setEmail($email)
     {
         $this->email = (string) $email;
@@ -82,19 +54,11 @@ class Shipping implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getPhoneNumber()
     {
         return $this->phone_number;
     }
 
-    /**
-     *
-     * @param mixed $phone_number
-     */
     public function setPhoneNumber($phone_number)
     {
         $this->phone_number = (string) $phone_number;
@@ -102,19 +66,11 @@ class Shipping implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getShippingAmount()
     {
         return $this->shipping_amount;
     }
 
-    /**
-     *
-     * @param mixed $shipping_amount
-     */
     public function setShippingAmount($shipping_amount)
     {
         $this->shipping_amount = (int) (string) ($shipping_amount * 100);
@@ -123,7 +79,6 @@ class Shipping implements \JsonSerializable
     }
 
     /**
-     *
      * @return Address
      */
     public function getAddress()
@@ -131,10 +86,6 @@ class Shipping implements \JsonSerializable
         return $this->address;
     }
 
-    /**
-     *
-     * @param Address $address
-     */
     public function setAddress(Address $address)
     {
         $this->address = $address;
@@ -143,7 +94,6 @@ class Shipping implements \JsonSerializable
     }
 
     /**
-     *
      * @return Address
      */
     public function address()
@@ -156,8 +106,6 @@ class Shipping implements \JsonSerializable
     }
 
     /**
-     *
-     * @param Customer $customer
      * @return Shipping
      */
     public function populateByCustomer(Customer $customer)

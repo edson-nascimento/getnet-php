@@ -1,16 +1,12 @@
 <?php
+
 namespace Getnet\API\Entity;
 
 use Getnet\API\Token;
 
-/**
- *
- * @package Getnet\API\Entity
- */
 class CardToken extends Token
 {
-
-    public function __construct(string $number_token, string $customer_id = null)
+    public function __construct(string $number_token, ?string $customer_id = null)
     {
         $this->number_token = $number_token;
         $this->customer_id = $customer_id;

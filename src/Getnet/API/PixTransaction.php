@@ -1,19 +1,14 @@
 <?php
+
 namespace Getnet\API;
 
-/**
- * Class Pix
- *
- * @package Getnet\API
- * @link https://developers.getnet.com.br/api#tag/PIX%2Fpaths%2F~1v1~1payments~1qrcode~1pix%2Fpost
- */
 class PixTransaction implements \JsonSerializable
 {
     use TraitEntity;
 
     private $amount;
 
-    private $currency = "BRL";
+    private $currency = 'BRL';
 
     private $order_id;
 
@@ -24,7 +19,7 @@ class PixTransaction implements \JsonSerializable
 
     public function __construct($amount = null)
     {
-        if (! is_null($amount)) {
+        if (!is_null($amount)) {
             $this->setAmount($amount);
         }
     }
@@ -83,15 +78,15 @@ class PixTransaction implements \JsonSerializable
         return $this;
     }
 
-	public function getExpirationTime(): ?int
+    public function getExpirationTime(): ?int
     {
-		return $this->expiration_time;
-	}
-	
-	public function setExpirationTime(?int $expiration_time) 
+        return $this->expiration_time;
+    }
+
+    public function setExpirationTime(?int $expiration_time)
     {
-		$this->expiration_time = $expiration_time;
-	
+        $this->expiration_time = $expiration_time;
+
         return $this;
-	}
+    }
 }

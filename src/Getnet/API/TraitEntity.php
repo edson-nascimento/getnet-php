@@ -1,9 +1,9 @@
 <?php
+
 namespace Getnet\API;
 
 trait TraitEntity
 {
-
     public function jsonSerialize(): mixed
     {
         $entity = clone $this;

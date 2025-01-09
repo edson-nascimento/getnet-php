@@ -1,24 +1,20 @@
 <?php
+
 namespace Getnet\API;
 
-/**
- * Class Card
- *
- * @package Getnet\API
- */
 class Card implements \JsonSerializable
 {
     use TraitEntity;
 
-    const BRAND_MASTERCARD = "Mastercard";
+    public const BRAND_MASTERCARD = 'Mastercard';
 
-    const BRAND_VISA = "Visa";
+    public const BRAND_VISA = 'Visa';
 
-    const BRAND_AMEX = "Amex";
+    public const BRAND_AMEX = 'Amex';
 
-    const BRAND_ELO = "Elo";
+    public const BRAND_ELO = 'Elo';
 
-    const BRAND_HIPERCARD = "Hipercard";
+    public const BRAND_HIPERCARD = 'Hipercard';
 
     private $brand;
 
@@ -31,14 +27,14 @@ class Card implements \JsonSerializable
     private $number_token;
 
     private $security_code;
-    
+
     // Cofre fields
     private $customer_id;
 
     private $cardholder_identification;
-    
+
     private $verify_card;
-    
+
     private $card_id;
 
     private $last_four_digits;
@@ -50,23 +46,21 @@ class Card implements \JsonSerializable
     private $transaction_id;
 
     private $used_at;
-    
+
     private $created_at;
 
     private $updated_at;
 
     /**
      * Card constructor.
-     *
-     * @param Token $token
      */
-    public function __construct(Token $token = null)
+    public function __construct(?Token $token = null)
     {
         if ($token) {
             $this->setNumberToken($token);
         }
     }
-    
+
     // Hidden info from saved card
     public function beforeSerialize()
     {
@@ -82,22 +76,14 @@ class Card implements \JsonSerializable
         $this->created_at = null;
         $this->updated_at = null;
     }
-    
+
     // Gets and sets
 
-    /**
-     *
-     * @return mixed
-     */
     public function getBrand()
     {
         return $this->brand;
     }
 
-    /**
-     *
-     * @param mixed $brand
-     */
     public function setBrand($brand)
     {
         $this->brand = (string) $brand;
@@ -105,19 +91,11 @@ class Card implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getCardholderName()
     {
         return $this->cardholder_name;
     }
 
-    /**
-     *
-     * @param mixed $cardholder_name
-     */
     public function setCardholderName($cardholder_name)
     {
         $this->cardholder_name = (string) $cardholder_name;
@@ -125,19 +103,11 @@ class Card implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getExpirationMonth()
     {
         return $this->expiration_month;
     }
 
-    /**
-     *
-     * @param mixed $expiration_month
-     */
     public function setExpirationMonth($expiration_month)
     {
         $this->expiration_month = (string) $expiration_month;
@@ -145,19 +115,11 @@ class Card implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getExpirationYear()
     {
         return $this->expiration_year;
     }
 
-    /**
-     *
-     * @param mixed $expiration_year
-     */
     public function setExpirationYear($expiration_year)
     {
         $this->expiration_year = (string) $expiration_year;
@@ -165,20 +127,12 @@ class Card implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getNumberToken()
     {
         return $this->number_token;
     }
 
-    /**
-     *
-     * @param Token $token
-     * TODO maybe remove entity Token
-     */
+    // TODO maybe remove entity Token.
     public function setNumberToken(Token $token)
     {
         $this->number_token = (string) $token->getNumberToken();
@@ -186,26 +140,18 @@ class Card implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getSecurityCode()
     {
         return $this->security_code;
     }
 
-    /**
-     *
-     * @param mixed $security_code
-     */
     public function setSecurityCode($security_code)
     {
         $this->security_code = (string) $security_code;
 
         return $this;
     }
-    
+
     // Cofre fields
     public function getCustomerId()
     {
@@ -215,7 +161,7 @@ class Card implements \JsonSerializable
     public function setCustomerId($customer_id)
     {
         $this->customer_id = $customer_id;
-        
+
         return $this;
     }
 
@@ -227,7 +173,7 @@ class Card implements \JsonSerializable
     public function setCardholderIdentification($cardholder_identification)
     {
         $this->cardholder_identification = $cardholder_identification;
-        
+
         return $this;
     }
 
@@ -237,13 +183,12 @@ class Card implements \JsonSerializable
     }
 
     /**
-     * 
      * @param bool $verify_card
      */
     public function setVerifyCard($verify_card)
     {
         $this->verify_card = $verify_card;
-        
+
         return $this;
     }
 
@@ -286,5 +231,4 @@ class Card implements \JsonSerializable
     {
         return $this->updated_at;
     }
-
 }

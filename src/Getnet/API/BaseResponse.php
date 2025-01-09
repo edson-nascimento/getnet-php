@@ -1,14 +1,9 @@
 <?php
+
 namespace Getnet\API;
 
-/**
- * Class BaseResponse
- *
- * @package Getnet\API
- */
 class BaseResponse implements \JsonSerializable
 {
-
     public $payment_id;
 
     public $seller_id;
@@ -40,7 +35,6 @@ class BaseResponse implements \JsonSerializable
     public $status_label;
 
     /**
-     *
      * @return array
      */
     public function jsonSerialize(): mixed
@@ -49,7 +43,8 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * TODO refactor and mapper individual and remove public props
+     * TODO refactor and mapper individual and remove public props.
+     *
      * @param array $json
      *
      * @return $this
@@ -58,7 +53,6 @@ class BaseResponse implements \JsonSerializable
     {
         if (is_array($json)) {
             array_walk_recursive($json, function ($value, $key) {
-
                 if (property_exists($this, $key)) {
                     $this->$key = $value;
                 }
@@ -70,18 +64,12 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getErrorMessage()
     {
         return $this->error_message;
     }
 
     /**
-     *
-     * @param mixed $error_message
      * @return BaseResponse
      */
     public function setErrorMessage($error_message)
@@ -91,18 +79,12 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getStatusCode()
     {
         return $this->status_code;
     }
 
     /**
-     *
-     * @param mixed $status_code
      * @return BaseResponse
      */
     public function setStatusCode($status_code)
@@ -112,18 +94,12 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getDescriptionDetail()
     {
         return $this->description_detail;
     }
 
     /**
-     *
-     * @param mixed $description_detail
      * @return BaseResponse
      */
     public function setDescriptionDetail($description_detail)
@@ -133,18 +109,12 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getErrorDescription()
     {
         return $this->description;
     }
 
     /**
-     *
-     * @param mixed $description
      * @return BaseResponse
      */
     public function setErrorDescription($description)
@@ -154,19 +124,11 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getPaymentId()
     {
         return $this->payment_id;
     }
 
-    /**
-     *
-     * @param mixed $payment_id
-     */
     public function setPaymentId($payment_id)
     {
         $this->payment_id = $payment_id;
@@ -174,19 +136,11 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getSellerId()
     {
         return $this->seller_id;
     }
 
-    /**
-     *
-     * @param mixed $seller_id
-     */
     public function setSellerId($seller_id)
     {
         $this->seller_id = $seller_id;
@@ -194,19 +148,11 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getAmount()
     {
         return $this->amount;
     }
 
-    /**
-     *
-     * @param mixed $amount
-     */
     public function setAmount($amount)
     {
         $this->amount = $amount;
@@ -214,19 +160,11 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getCurrency()
     {
         return $this->currency;
     }
 
-    /**
-     *
-     * @param mixed $currency
-     */
     public function setCurrency($currency)
     {
         $this->currency = $currency;
@@ -234,19 +172,11 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getOrderId()
     {
         return $this->order_id;
     }
 
-    /**
-     *
-     * @param mixed $order_id
-     */
     public function setOrderId($order_id)
     {
         $this->order_id = $order_id;
@@ -254,10 +184,6 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getStatus()
     {
         if ($this->status_code == 201) {
@@ -282,10 +208,6 @@ class BaseResponse implements \JsonSerializable
         return $this->status;
     }
 
-    /**
-     *
-     * @param mixed $status
-     */
     public function setStatus($status)
     {
         $this->status = $status;
@@ -293,19 +215,11 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getReceivedAt()
     {
         return $this->received_at;
     }
 
-    /**
-     *
-     * @param mixed $received_at
-     */
     public function setReceivedAt($received_at)
     {
         $this->received_at = $received_at;
@@ -313,19 +227,11 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getResponseJSON()
     {
         return $this->responseJSON;
     }
 
-    /**
-     *
-     * @param mixed $array
-     */
     public function setResponseJSON($array)
     {
         $this->responseJSON = json_encode($array, JSON_PRETTY_PRINT);
@@ -333,19 +239,11 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getMessage()
     {
         return $this->message;
     }
 
-    /**
-     *
-     * @param mixed $message
-     */
     public function setMessage($message)
     {
         $this->message = $message;
@@ -353,19 +251,11 @@ class BaseResponse implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getError_code()
     {
         return $this->error_code;
     }
 
-    /**
-     *
-     * @param mixed $error_code
-     */
     public function setError_code($error_code)
     {
         $this->error_code = $error_code;

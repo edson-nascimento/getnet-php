@@ -1,14 +1,9 @@
 <?php
+
 namespace Getnet\API;
 
-/**
- * Class Token
- *
- * @package Getnet\API
- */
 class Token
 {
-
     public $number_token;
 
     protected $card_number;
@@ -20,39 +15,28 @@ class Token
      *
      * @param string $card_number
      * @param string $customer_id
-     * @param Getnet $credencial
      */
-    public function __construct($card_number, $customer_id, Getnet $credencial = null)
+    public function __construct($card_number, $customer_id, ?Getnet $credencial = null)
     {
         $this->setCardNumber($card_number);
         $this->setCustomerId($customer_id);
-        
+
         if ($credencial) {
             $this->setNumberToken($credencial);
         }
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function __toString()
     {
         return $this->number_token;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getCardNumber()
     {
         return $this->card_number;
     }
 
     /**
-     *
-     * @param mixed $card_number
      * @return Token
      */
     public function setCardNumber($card_number)
@@ -62,18 +46,12 @@ class Token
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getCustomerId()
     {
         return $this->customer_id;
     }
 
     /**
-     *
-     * @param mixed $customer_id
      * @return Token
      */
     public function setCustomerId($customer_id)
@@ -83,30 +61,25 @@ class Token
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getNumberToken()
     {
         return $this->number_token;
     }
 
     /**
-     * 
      * @deprecated
      * Remove in next major version
      */
     public function setNumberToken(Getnet $credencial)
     {
-        $data = array(
-            "card_number" => $this->card_number,
-            "customer_id" => $this->customer_id
-        );
+        $data = [
+            'card_number' => $this->card_number,
+            'customer_id' => $this->customer_id,
+        ];
 
         $request = new Request($credencial);
-        $response = $request->post($credencial, "/v1/tokens/card", json_encode($data));
-        $this->number_token = $response["number_token"];
+        $response = $request->post($credencial, '/v1/tokens/card', json_encode($data));
+        $this->number_token = $response['number_token'];
 
         return $this;
     }

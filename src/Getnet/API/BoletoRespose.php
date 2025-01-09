@@ -1,14 +1,10 @@
 <?php
+
 namespace Getnet\API;
 
-/**
- * Class BoletoRespose
- *
- * @package Getnet\API
- */
+// TODO rename to BoletoResponse in major version
 class BoletoRespose extends BaseResponse
 {
-
     public $boleto_id;
 
     public $bank;
@@ -33,10 +29,6 @@ class BoletoRespose extends BaseResponse
 
     private $base_url;
 
-    /**
-     *
-     * @param mixed $base_url
-     */
     public function setBaseUrl($base_url)
     {
         $this->base_url = $base_url;
@@ -47,41 +39,27 @@ class BoletoRespose extends BaseResponse
     public function generateLinks()
     {
         if ($this->getPaymentId()) {
-            $this->boleto_pdf = $this->base_url . "/v1/payments/boleto/" . $this->getPaymentId() . "/pdf";
-            $this->boleto_html = $this->base_url . "/v1/payments/boleto/" . $this->getPaymentId() . "/html";
+            $this->boleto_pdf = $this->base_url . '/v1/payments/boleto/' . $this->getPaymentId() . '/pdf';
+            $this->boleto_html = $this->base_url . '/v1/payments/boleto/' . $this->getPaymentId() . '/html';
         }
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getBoletoPdf()
     {
         return $this->boleto_pdf;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getBoletoHtml()
     {
         return $this->boleto_html;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getDocumentNumber()
     {
         return $this->document_number;
     }
 
     /**
-     *
-     * @param mixed $document_number
      * @return BoletoRespose
      */
     public function setDocumentNumber($document_number)
@@ -91,18 +69,12 @@ class BoletoRespose extends BaseResponse
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getDescription()
     {
         return $this->description;
     }
 
     /**
-     *
-     * @param mixed $description
      * @return BaseResponse
      */
     public function setDescription($description)
@@ -112,18 +84,12 @@ class BoletoRespose extends BaseResponse
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getBoletoId()
     {
         return $this->boleto_id;
     }
 
     /**
-     *
-     * @param mixed $boleto_id
      * @return BoletoRespose
      */
     public function setBoletoId($boleto_id)
@@ -133,18 +99,12 @@ class BoletoRespose extends BaseResponse
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getBank()
     {
         return $this->bank;
     }
 
     /**
-     *
-     * @param mixed $bank
      * @return BoletoRespose
      */
     public function setBank($bank)
@@ -154,18 +114,12 @@ class BoletoRespose extends BaseResponse
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getStatusLabel()
     {
         return $this->status_label;
     }
 
     /**
-     *
-     * @param mixed $status_label
      * @return BoletoRespose
      */
     public function setStatusLabel($status_label)
@@ -175,18 +129,12 @@ class BoletoRespose extends BaseResponse
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getTypefulLine()
     {
         return $this->typeful_line;
     }
 
     /**
-     *
-     * @param mixed $typeful_line
      * @return BoletoRespose
      */
     public function setTypefulLine($typeful_line)
@@ -196,18 +144,12 @@ class BoletoRespose extends BaseResponse
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getBarCode()
     {
         return $this->bar_code;
     }
 
     /**
-     *
-     * @param mixed $bar_code
      * @return BoletoRespose
      */
     public function setBarCode($bar_code)
@@ -217,18 +159,12 @@ class BoletoRespose extends BaseResponse
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getIssueDate()
     {
         return $this->issue_date;
     }
 
     /**
-     *
-     * @param mixed $issue_date
      * @return BoletoRespose
      */
     public function setIssueDate($issue_date)
@@ -238,18 +174,12 @@ class BoletoRespose extends BaseResponse
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getExpirationDate()
     {
         return $this->expiration_date;
     }
 
     /**
-     *
-     * @param mixed $expiration_date
      * @return BoletoRespose
      */
     public function setExpirationDate($expiration_date)
@@ -259,18 +189,12 @@ class BoletoRespose extends BaseResponse
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getOurNumber()
     {
         return $this->our_number;
     }
 
     /**
-     *
-     * @param mixed $our_number
      * @return BoletoRespose
      */
     public function setOurNumber($our_number)

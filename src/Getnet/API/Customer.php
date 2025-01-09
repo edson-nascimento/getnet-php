@@ -1,18 +1,14 @@
 <?php
+
 namespace Getnet\API;
 
-/**
- * Class Customer
- *
- * @package Getnet\API
- */
 class Customer implements \JsonSerializable
 {
     use TraitEntity;
 
-    const DOCUMENT_TYPE_CPF = "CPF";
+    public const DOCUMENT_TYPE_CPF = 'CPF';
 
-    const DOCUMENT_TYPE_CNPJ = "CNPJ";
+    public const DOCUMENT_TYPE_CNPJ = 'CNPJ';
 
     private $customer_id;
 
@@ -37,19 +33,11 @@ class Customer implements \JsonSerializable
         $this->setCustomerId($customer_id);
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getCustomerId()
     {
         return $this->customer_id;
     }
 
-    /**
-     *
-     * @param mixed $customer_id
-     */
     public function setCustomerId($customer_id)
     {
         $this->customer_id = (string) $customer_id;
@@ -57,19 +45,11 @@ class Customer implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getFirstName()
     {
         return $this->first_name;
     }
 
-    /**
-     *
-     * @param mixed $first_name
-     */
     public function setFirstName($first_name)
     {
         $this->first_name = (string) $first_name;
@@ -77,19 +57,11 @@ class Customer implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getLastName()
     {
         return $this->last_name;
     }
 
-    /**
-     *
-     * @param mixed $last_name
-     */
     public function setLastName($last_name)
     {
         $this->last_name = (string) $last_name;
@@ -97,19 +69,11 @@ class Customer implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     *
-     * @param mixed $name
-     */
     public function setName($name)
     {
         $this->name = (string) $name;
@@ -117,19 +81,11 @@ class Customer implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getEmail()
     {
         return $this->email;
     }
 
-    /**
-     *
-     * @param mixed $email
-     */
     public function setEmail($email)
     {
         $this->email = (string) $email;
@@ -137,19 +93,11 @@ class Customer implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getDocumentType()
     {
         return $this->document_type;
     }
 
-    /**
-     *
-     * @param mixed $document_type
-     */
     public function setDocumentType($document_type)
     {
         $this->document_type = (string) $document_type;
@@ -157,19 +105,11 @@ class Customer implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getDocumentNumber()
     {
         return $this->document_number;
     }
 
-    /**
-     *
-     * @param mixed $document_number
-     */
     public function setDocumentNumber($document_number)
     {
         $this->document_number = (string) $document_number;
@@ -177,19 +117,11 @@ class Customer implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getPhoneNumber()
     {
         return $this->phone_number;
     }
 
-    /**
-     *
-     * @param mixed $phone_number
-     */
     public function setPhoneNumber($phone_number)
     {
         $this->phone_number = (string) $phone_number;
@@ -198,7 +130,6 @@ class Customer implements \JsonSerializable
     }
 
     /**
-     *
      * @return Address
      */
     public function billingAddress()
@@ -211,7 +142,6 @@ class Customer implements \JsonSerializable
     }
 
     /**
-     *
      * @return Address
      */
     public function getBillingAddress()
@@ -219,10 +149,6 @@ class Customer implements \JsonSerializable
         return $this->billing_address;
     }
 
-    /**
-     *
-     * @param mixed $billing_address
-     */
     public function setBillingAddress($billing_address)
     {
         $this->billing_address = $billing_address;

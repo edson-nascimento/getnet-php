@@ -1,9 +1,10 @@
 <?php
+
 use Getnet\API\Card;
 
 require_once '../config/bootstrap.test.php';
 
-//Autenticação da API
+// Autenticação da API
 $getnet = getnetServiceTest();
 
 $cardService = new \Getnet\API\Service\CardService($getnet);
@@ -15,15 +16,13 @@ $customer_id = 'customer_210818263';
 $cardToken = $cardService->generateCardToken($card_number, $customer_id);
 var_dump($cardToken->getNumberToken());
 
-
 $card = new Card($cardToken);
 $card->setBrand(Card::BRAND_MASTERCARD)
-    ->setExpirationMonth("12")
+    ->setExpirationMonth('12')
     ->setExpirationYear(date('y') + 1)
-    ->setCardholderName("Jax Teller")
-    ->setSecurityCode("123")
+    ->setCardholderName('Jax Teller')
+    ->setSecurityCode('123')
     ->setCustomerId($customer_id);
-
 
 // Save
 $tokenResponse = $cardService->saveCard($card);

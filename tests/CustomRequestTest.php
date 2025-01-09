@@ -1,11 +1,11 @@
 <?php
+
 namespace Tests;
 
 use PHPUnit\Framework\Attributes\Group;
 
 final class CustomRequestTest extends TestBase
 {
-
     #[Group('e2e')]
     public function testListCustomers(): void
     {

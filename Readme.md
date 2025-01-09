@@ -1,10 +1,12 @@
 ### GETNET SDK PHP - API v1
+
 E-commerce
 
 Todos os passos e processos referentes à integração com o sistema de captura e autorização de transações financeiras da Getnet via as funcionalidades da API.
 
- Documentação oficial
-* https://developers.getnet.com.br/api
+Documentação oficial
+
+- <https://developers.getnet.com.br/api>
 
 #### Pré-requisitos
 
@@ -13,14 +15,18 @@ Todos os passos e processos referentes à integração com o sistema de captura 
 #### Composer
 
 add composer.json
-```
+
+```bash
 "edson-nascimento/getnet-php": "^3.0"
 ```
+
 ou execute
+
 ```base
 composer require edson-nascimento/getnet-php
 ```
-#### Exemplo Autorização com cartão de crédito MasterCard R$27,50 em 2x 
+
+#### Exemplo Autorização com cartão de crédito MasterCard R$27,50 em 2x
 
 ```php
 use Getnet\API\Getnet;
@@ -133,6 +139,7 @@ $response->getStatus();
 ```
 
 #### CONFIRMA PAGAMENTO (CAPTURA)
+
 ```php
 // Autenticação da API
 $getnet = new Getnet($client_id, $client_secret, $environment, $keySession);
@@ -145,6 +152,7 @@ $capture->getStatus();
 ```
 
 #### CANCELA PAGAMENTO (CRÉDITO e DÉBITO)
+
 ```php
 // Autenticação da API
 $getnet = new Getnet($client_id, $client_secret, $environment, $keySession);
@@ -156,6 +164,7 @@ $cancel->getStatus();
 ```
 
 #### PAGAMENTO VIA PIX
+
 ```php
 // Autenticação da API
 $getnet = new Getnet($client_id, $client_secret, $environment);
@@ -179,6 +188,7 @@ print $response->getQrCode();
 ```
 
 #### CARTÃO DE DÉBITO
+
 ```php
 // Autenticação da API
 $getnet = new Getnet($client_id, $client_secret, $environment, $keySession);
@@ -201,22 +211,34 @@ $transaction->debit()
 $response = $getnet->authorize($transaction);
 ```
 
-*Depois de autorizar é preciso redirecionar o cliente para o redirect_url passando uma url de callback
+\*Depois de autorizar é preciso redirecionar o cliente para o redirect_url passando uma url de callback
 
 ```html
-<form action="<?php echo $response->getRedirectUrl();?>" method="post" target="_blank">
-    <input type="hidden" name="MD"  value="<?php echo $response->getIssuerPaymentId();?>" />
-    <input type="hidden" name="PaReq"  value="<?php echo $response->getPayerAuthenticationRequest();?>" />
-    <input type="hidden" name="TermUrl"  value="<?php echo $URL_NOTIFY;?>" />
-    
-    <input type="submit" value="Authentication Card" />
+<form
+  action="<?php echo $response->getRedirectUrl();?>"
+  method="post"
+  target="_blank"
+>
+  <input
+    type="hidden"
+    name="MD"
+    value="<?php echo $response->getIssuerPaymentId();?>"
+  />
+  <input
+    type="hidden"
+    name="PaReq"
+    value="<?php echo $response->getPayerAuthenticationRequest();?>"
+  />
+  <input type="hidden" name="TermUrl" value="<?php echo $URL_NOTIFY;?>" />
+
+  <input type="submit" value="Authentication Card" />
 </form>
 ```
 
-*Depois do cliente finalizar o pagamento e você receber o callback
+\*Depois do cliente finalizar o pagamento e você receber o callback
 
 ```php
-//CONFIRMAR O PAGAMENTO COM payer_authentication_response recibo na URL de Noficação
+//CONFIRMAR O PAGAMENTO COM payer_authentication_response recibo na URL de Notificação
 $response = $getnet->authorizeConfirmDebit($response->getPaymentId(), $payer_authentication_response);
 
 // Resultado da transação - Consultar tabela abaixo
@@ -339,63 +361,66 @@ print_r($response['customers']);
 ```
 
 ### Possíveis status de resposta de uma transação
-|Status|Descrição|
-| ------- | --------- |
-|PENDING|Registrada ou Aguardando ação|
-|CANCELED|Desfeita ou Cancelada|
-|APPROVED|Aprovada|
-|DENIED|Negada|
-|AUTHORIZED|Autorizada pelo emissor|
-|CONFIRMED|Confirmada ou Capturada|
-|WAITING|Aguardando pagamento pix|
+
+| Status     | Descrição                     |
+| ---------- | ----------------------------- |
+| PENDING    | Registrada ou Aguardando ação |
+| CANCELED   | Desfeita ou Cancelada         |
+| APPROVED   | Aprovada                      |
+| DENIED     | Negada                        |
+| AUTHORIZED | Autorizada pelo emissor       |
+| CONFIRMED  | Confirmada ou Capturada       |
+| WAITING    | Aguardando pagamento pix      |
 
 ### Cartões para testes
 
-|  N. Cartão |  Resultado esperado |
-| ------------ | ------------ |
-|  5155901222280001 (Master)	  | Transação Autorizada  |
-| 5155901222270002   (Master)|  Transação Não Autorizada |
-|  5155901222260003 (Master) |  Transação Não Autorizada |
-| 5155901222250004 (Master) |Transação Não Autorizada|
-| 4012001037141112 (Visa) |Transação Autorizada|
-
+| N. Cartão                 | Resultado esperado       |
+| ------------------------- | ------------------------ |
+| 5155901222280001 (Master) | Transação Autorizada     |
+| 5155901222270002 (Master) | Transação Não Autorizada |
+| 5155901222260003 (Master) | Transação Não Autorizada |
+| 5155901222250004 (Master) | Transação Não Autorizada |
+| 4012001037141112 (Visa)   | Transação Autorizada     |
 
 ### Ambientes disponíveis
-|Paramentro|Detalhe|
-| ------- | --------- |
-|SANDBOX|Sandbox - para desenvolvedores |
-|HOMOLOG|Homologação - para lojistas e devs |
-|PRODUCTION|Produção - somente lojistas |
+
+| Paramentro | Detalhe                            |
+| ---------- | ---------------------------------- |
+| SANDBOX    | Sandbox - para desenvolvedores     |
+| HOMOLOG    | Homologação - para lojistas e devs |
+| PRODUCTION | Produção - somente lojistas        |
 
 ### Meios de Pagamento
-|Modalidade|Descrição|
-| ------- | --------- |
-|CREDIT|Pagamento com cartão de crédito|
-|DEBIT|Pagamento com cartão de débito|
-|BOLETO|Gera boleto|
 
+| Modalidade | Descrição                       |
+| ---------- | ------------------------------- |
+| CREDIT     | Pagamento com cartão de crédito |
+| DEBIT      | Pagamento com cartão de débito  |
+| BOLETO     | Gera boleto                     |
 
 ### Métodos de Pagamento
-|Método|Descrição|
-| ------- | --------- |
-|authorize|Autoriza uma transação com Pre-Auth ou não|
-|authorizeConfirm|Confirma uma autorização de crédito|
-|authorizeConfirmDebit|Confirma uma autorização de débito|
-|authorizeCancel|Cancela a transação|
-|boleto|Gera boleto|
 
-###  Instalar e configurar ambiente para desenvolvimento/alterações
+| Método                | Descrição                                  |
+| --------------------- | ------------------------------------------ |
+| authorize             | Autoriza uma transação com Pre-Auth ou não |
+| authorizeConfirm      | Confirma uma autorização de crédito        |
+| authorizeConfirmDebit | Confirma uma autorização de débito         |
+| authorizeCancel       | Cancela a transação                        |
+| boleto                | Gera boleto                                |
+
+### Instalar e configurar ambiente para desenvolvimento/alterações
 
 - Clone o repositório
 - Instale as dependências rodando `composer install` na raiz do projeto
 - Na pasta `config` crie um arquivo `config/env.test.php` baseado no `config/env.test.php.txt`
 - Adicione suas credenciais do sandbox da getnet no `config/env.test.php`
--  **Rodar testes**
-    - `composer test`
-    - `composer test:unit`
-    - `composer test:e2e`
-    - `composer phpstan`
 
+### Testes e linters
 
-
-
+- Rodar todos os testes e PHPStan `composer test`
+- Rodar todos os testes `composer phpunit`
+- Testes unitários `composer test:unit`
+- Testes integração `composer test:e2e`
+- PHPStan `composer phpstan`
+- PHP-CS-Fixer verify `composer format:check`
+- PHP-CS-Fixer fix `composer format:fix`

@@ -1,13 +1,9 @@
 <?php
+
 namespace Getnet\API\Entity;
 
-/**
- *
- * @package Getnet\API\Entity
- */
 class CardTokenResponse
 {
-
     private $card_id;
 
     private $number_token;

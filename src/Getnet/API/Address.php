@@ -1,11 +1,7 @@
 <?php
+
 namespace Getnet\API;
 
-/**
- * Class Address
- *
- * @package Getnet\API
- */
 class Address implements \JsonSerializable
 {
     use TraitEntity;
@@ -31,19 +27,11 @@ class Address implements \JsonSerializable
         $this->setPostalCode($postal_code);
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getCity()
     {
         return $this->city;
     }
 
-    /**
-     *
-     * @param mixed $city
-     */
     public function setCity($city)
     {
         $this->city = (string) $city;
@@ -51,19 +39,11 @@ class Address implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getComplement()
     {
         return $this->complement;
     }
 
-    /**
-     *
-     * @param mixed $complement
-     */
     public function setComplement($complement)
     {
         $this->complement = (string) $complement;
@@ -71,19 +51,11 @@ class Address implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getCountry()
     {
         return $this->country;
     }
 
-    /**
-     *
-     * @param mixed $country
-     */
     public function setCountry($country)
     {
         $this->country = (string) $country;
@@ -91,19 +63,11 @@ class Address implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getDistrict()
     {
         return $this->district;
     }
 
-    /**
-     *
-     * @param mixed $district
-     */
     public function setDistrict($district)
     {
         $this->district = (string) $district;
@@ -111,19 +75,11 @@ class Address implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getNumber()
     {
         return $this->number;
     }
 
-    /**
-     *
-     * @param mixed $number
-     */
     public function setNumber($number)
     {
         $this->number = (string) $number;
@@ -131,19 +87,11 @@ class Address implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getPostalCode()
     {
         return $this->postal_code;
     }
 
-    /**
-     *
-     * @param mixed $postal_code
-     */
     public function setPostalCode($postal_code)
     {
         $this->postal_code = (string) $postal_code;
@@ -151,19 +99,11 @@ class Address implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getState()
     {
         return $this->state;
     }
 
-    /**
-     *
-     * @param mixed $state
-     */
     public function setState($state)
     {
         $this->state = (string) $state;
@@ -171,19 +111,11 @@ class Address implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getStreet()
     {
         return $this->street;
     }
 
-    /**
-     *
-     * @param mixed $street
-     */
     public function setStreet($street)
     {
         $this->street = (string) $street;

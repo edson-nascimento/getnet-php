@@ -1,16 +1,16 @@
 <?php
+
 namespace Tests;
 
-use Getnet\API\Credit;
-use Getnet\API\Card;
 use Getnet\API\AuthorizeResponse;
+use Getnet\API\Card;
+use Getnet\API\Credit;
 use Getnet\API\Transaction;
-use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Group;
 
 final class AuthorizePosteriorTest extends TestBase
 {
-
     #[Group('e2e')]
     public function testAuthorizePosteriorCreate(): AuthorizeResponse
     {
@@ -18,13 +18,13 @@ final class AuthorizePosteriorTest extends TestBase
         $transaction->setAmount(27.90);
 
         // Generate token card
-        $tokenCard = new \Getnet\API\Token("5155901222280001", $transaction->getCustomer()->getCustomerId(), $this->getnetService());
+        $tokenCard = new \Getnet\API\Token('5155901222280001', $transaction->getCustomer()->getCustomerId(), $this->getnetService());
 
         // Add payment
         $transaction->credit()
             ->setAuthenticated(false)
-            ->setDynamicMcc("1799")
-            ->setSoftDescriptor("LOJA*TESTE*COMPRA-123")
+            ->setDynamicMcc('1799')
+            ->setSoftDescriptor('LOJA*TESTE*COMPRA-123')
             ->setDelayed(false)
             ->setPreAuthorization(true)
             ->setNumberInstallments(2)
@@ -32,13 +32,13 @@ final class AuthorizePosteriorTest extends TestBase
             ->setTransactionType(Credit::TRANSACTION_TYPE_INSTALL_NO_INTEREST)
             ->card($tokenCard)
             ->setBrand(Card::BRAND_MASTERCARD)
-            ->setExpirationMonth("12")
+            ->setExpirationMonth('12')
             ->setExpirationYear(date('y') + 1)
-            ->setCardholderName("Jax Teller")
-            ->setSecurityCode("123");
+            ->setCardholderName('Jax Teller')
+            ->setSecurityCode('123');
 
         $response = $this->getnetService()->authorize($transaction);
-        
+
         if (!($response instanceof AuthorizeResponse)) {
             throw new \Exception($response->getResponseJSON());
         }
