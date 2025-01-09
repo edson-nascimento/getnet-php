@@ -1,12 +1,15 @@
 /vendor/
 /.settings/
 /.project
+/cache/
 .buildpath
 composer.lock
 /build
 /vendor
 /.idea
 /tests/tmp
-/tests/.phpunit.result.cache
 config/env.test.php
 error_log
+.phpunit.cache/*
+.vscode/settings.json
+.php-cs-fixer.cache

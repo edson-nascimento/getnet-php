@@ -1,48 +1,70 @@
 {
-    "name":"edson-nascimento/getnet-php",
-    "description":"SDK php para integração com a API Getnet",
-    "minimum-stability":"stable",
-    "license":"MIT",
-    "type":"library",
-    "require":{
-        "php": "^8.2"
-    },
-    "require-dev":{
-        "phpunit/phpunit": "^11.1.2",
-        "phpstan/phpstan": "^1.10.67",
-        "kint-php/kint": "^5.1.0",
-        "monolog/monolog":"*"
-    },
-    "autoload":{
-        "psr-4":{
-            "Getnet\\":"src//Getnet"
-        }
-    },
-    "autoload-dev":{
-        "psr-4":{
-            "Tests\\": "tests"
-        }
-    },
-    "scripts":{
-        "phpstan":"phpstan analyse -c phpstan.neon",
-        "phpunit":"phpunit --configuration phpunit.xml --testdox",
-        "test":[
-            "@phpstan",
-            "@phpunit"
-        ],
-        "test:unit":"phpunit --configuration phpunit.xml --testdox --exclude-group e2e",
-        "test:e2e":"phpunit --configuration phpunit.xml --testdox --group e2e",
-        "test:coverage":"phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage"
-    },
-    "authors":[
-        {
-            "name":"Bruno Paz",
-            "email":"brunopaz@azpay.com.br"
-        },
-        {
-            "name":"Edson Nascimento",
-            "email":"edson27bn@gmail.com"
-        }
+  "name": "edson-nascimento/getnet-php",
+  "description": "SDK php para integração com a API Getnet",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "type": "library",
+  "require": {
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.5.2",
+    "phpstan/phpstan": "^1.12.15",
+    "kint-php/kint": "^5.1.1",
+    "monolog/monolog": "*",
+    "friendsofphp/php-cs-fixer": "^3.65.0",
+    "brainmaestro/composer-git-hooks": "^3.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Getnet\\": "src//Getnet"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "start": "php -S localhost:8879 -t .",
+    "format:check": "php-cs-fixer fix --dry-run --stop-on-violation",
+    "format:fix": "php-cs-fixer fix",
+    "phpstan": "phpstan analyse -c phpstan.neon",
+    "phpunit": "phpunit --configuration phpunit.xml --testdox",
+    "test": [
+      "@phpstan",
+      "@phpunit"
     ],
-    "homepage":"https://github.com/edson-nascimento/getnet-php"
+    "lint": [
+      "@format:fix",
+      "@phpstan"
+    ],
+    "test:unit": "phpunit --configuration phpunit.xml --testdox --exclude-group e2e",
+    "test:e2e": "phpunit --configuration phpunit.xml --testdox --group e2e",
+    "test:coverage": "phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml --coverage-html build/coverage"
+  },
+  "extra": {
+    "hooks": {
+      "config": {
+        "stop-on-failure": [
+          "pre-push",
+          "pre-commit"
+        ]
+      },
+      "pre-commit": [
+        "composer format:check"
+      ]
+    }
+  },
+  "authors": [
+    {
+      "name": "Bruno Paz",
+      "email": "brunopaz@azpay.com.br"
+    },
+    {
+      "name": "Edson Nascimento",
+      "email": "edson27bn@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/edson-nascimento/getnet-php"
 }

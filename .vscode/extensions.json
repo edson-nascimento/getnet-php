@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-portuguese",
+    "usernamehw.errorlens",
+    "eamodio.gitlens",
+    "seatonjiang.gitmoji-vscode",
+    "devsense.phptools-vscode",
+    "phproberto.vscode-php-getters-setters",
+    "mehedidracula.php-namespace-resolver",
+    "junstyle.php-cs-fixer"
+  ],
+  "unwantedRecommendations": []
+}
