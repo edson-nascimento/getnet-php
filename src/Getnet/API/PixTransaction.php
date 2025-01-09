@@ -19,11 +19,19 @@ class PixTransaction implements \JsonSerializable
 
     private $customer_id;
 
+    // In seconds, between 180 and 1800
+    private ?int $expiration_time = null;
+
     public function __construct($amount = null)
     {
         if (! is_null($amount)) {
             $this->setAmount($amount);
         }
+    }
+
+    public function beforeSerialize()
+    {
+        $this->expiration_time = null;
     }
 
     // gets and sets
@@ -74,4 +82,16 @@ class PixTransaction implements \JsonSerializable
 
         return $this;
     }
+
+	public function getExpirationTime(): ?int
+    {
+		return $this->expiration_time;
+	}
+	
+	public function setExpirationTime(?int $expiration_time) 
+    {
+		$this->expiration_time = $expiration_time;
+	
+        return $this;
+	}
 }

@@ -44,9 +44,8 @@ class Getnet
         $this->setEnvironment($environment);
         $this->setKeySession($keySession);
 
-        $request = new Request($this);
-
-        $request->auth($this);
+        // TODO refactor auth in constructor Request
+        new Request($this);
     }
 
     /**
@@ -390,6 +389,11 @@ class Getnet
             }
 
             $request = new Request($this);
+
+            if ($pix->getExpirationTime() > 0 && $pix->getExpirationTime() <= 1800) {
+                $request->addCustomHeader("x-qrcode-expiration-time: {$pix->getExpirationTime()}");
+            }
+
             $response = $request->post($this, "/v1/payments/qrcode/pix", $pix->toJSON());
 
             $pixResponse = new PixResponse();
@@ -404,9 +408,11 @@ class Getnet
         }
     }
     
-    public function customRequest(string $method, string $url_path, $body = null)
+     /** @param string[] $headers */
+    public function customRequest(string $method, string $url_path, $body = null, array $headers = [])
     {
         $request = new Request($this);
+        $request->setCustomHeaders($headers);
         
         return $request->custom($this, $method, $url_path, $body);
     }

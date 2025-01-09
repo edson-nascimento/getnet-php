@@ -19,6 +19,9 @@ class Request
      */
     private $baseUrl = '';
 
+    /**  @var string[] */
+    private array $customHeaders = [];
+
     public const CURL_TYPE_AUTH = "AUTH";
 
     public const CURL_TYPE_POST = "POST";
@@ -119,29 +122,19 @@ class Request
     private function send(Getnet $credentials, $url_path, $method, $jsonBody = null)
     {
         $curl = curl_init($this->getFullUrl($url_path));
-
-        $defaultCurlOptions = array(
-            CURLOPT_CONNECTTIMEOUT => 60,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_TIMEOUT => 60,
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json; charset=utf-8'
-            ),
-            CURLOPT_SSL_VERIFYHOST => 2,
-            CURLOPT_SSL_VERIFYPEER => 0
-        );
+        $defaultHeaders = ['Content-Type: application/json; charset=utf-8'];
 
         // Use in PIX
         if (! empty($credentials->getSellerId())) {
-            $defaultCurlOptions[CURLOPT_HTTPHEADER][] = 'seller_id: ' . $credentials->getSellerId();
+            $defaultHeaders[] = 'seller_id: ' . $credentials->getSellerId();
         }
 
         // Auth
         if ($method === self::CURL_TYPE_AUTH) {
-            $defaultCurlOptions[CURLOPT_HTTPHEADER][0] = 'application/x-www-form-urlencoded';
+            $defaultHeaders[0] = 'application/x-www-form-urlencoded';
             curl_setopt($curl, CURLOPT_USERPWD, $credentials->getClientId() . ":" . $credentials->getClientSecret());
         } else {
-            $defaultCurlOptions[CURLOPT_HTTPHEADER][] = 'Authorization: Bearer ' . $credentials->getAuthorizationToken();
+            $defaultHeaders[] = 'Authorization: Bearer ' . $credentials->getAuthorizationToken();
         }
 
         // Add custom method
@@ -159,7 +152,14 @@ class Request
         }
 
         curl_setopt($curl, CURLOPT_ENCODING, "");
-        curl_setopt_array($curl, $defaultCurlOptions);
+        curl_setopt_array($curl, [
+            CURLOPT_CONNECTTIMEOUT => 60,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 60,
+            CURLOPT_HTTPHEADER => array_merge($defaultHeaders, $this->customHeaders),
+            CURLOPT_SSL_VERIFYHOST => 2,
+            CURLOPT_SSL_VERIFYPEER => 0
+        ]);
 
         $response = null;
         $errorMessage = '';
@@ -289,4 +289,24 @@ class Request
         
         return $this->send($credentials, $url_path, $method, $body);
     }
+
+	public function getCustomHeaders(): array
+    {
+		return $this->customHeaders;
+	}
+	
+    /** @param string[] $customHeaders */
+	public function setCustomHeaders(array $customHeaders): static
+    {
+		$this->customHeaders = $customHeaders;
+	
+        return $this;
+	}
+
+    public function addCustomHeader(string $header): static
+    {
+		$this->customHeaders[] = $header;
+		
+        return $this;
+	}
 }

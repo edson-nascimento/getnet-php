@@ -12,6 +12,8 @@ $transaction->setCurrency("BRL");
 $transaction->setOrderId('DEV-1608748980');
 $transaction->setCustomerId('12345');
 
+// Opcional, o valor default de 180s. O valor máximo para o tempo de expiração é 1800s
+$transaction->setExpirationTime(600);
 
 $response = $getnet->pix($transaction);
 
