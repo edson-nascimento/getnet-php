@@ -41,14 +41,22 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
-      
-      # TODO test direct env php with github actios
+
+      - name: Restore cache folder
+        uses: actions/cache@v4
+        with:
+          path: cache/
+          key: ${{ runner.os }}-cache-folder-${{ hashFiles('cache/**') }}
+          restore-keys: |
+            ${{ runner.os }}-cache-folder-
+
+      # TODO test direct env php with github actions
       - name: Add config/env.test.php
         run: echo '${{ secrets.ENV_PHP }}' > $GITHUB_WORKSPACE/config/env.test.php
 
       - name: Install dependencies
         run: composer update --no-interaction --no-progress --ignore-platform-reqs
-      
+
       - name: Static analysis
         run: composer phpstan
 

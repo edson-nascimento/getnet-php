@@ -1,16 +1,16 @@
 <?php
+
 namespace Tests;
 
-use Getnet\API\Credit;
-use Getnet\API\Card;
 use Getnet\API\AuthorizeResponse;
+use Getnet\API\Card;
+use Getnet\API\Credit;
 use Getnet\API\Transaction;
-use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Group;
 
 final class AuthorizeTest extends TestBase
 {
-
     private static $CARD_TOKEN;
 
     #[Group('e2e')]
@@ -20,15 +20,15 @@ final class AuthorizeTest extends TestBase
         $transaction->setAmount(857.96);
 
         // Generate token card
-        $tokenCard = new \Getnet\API\Token("5155901222280001", $transaction->getCustomer()->getCustomerId(), $this->getnetService());
+        $tokenCard = new \Getnet\API\Token('5155901222280001', $transaction->getCustomer()->getCustomerId(), $this->getnetService());
 
         self::$CARD_TOKEN = $tokenCard->getNumberToken();
 
         // Add payment
         $transaction->credit()
             ->setAuthenticated(false)
-            ->setDynamicMcc("1799")
-            ->setSoftDescriptor("LOJA*TESTE*COMPRA-123")
+            ->setDynamicMcc('1799')
+            ->setSoftDescriptor('LOJA*TESTE*COMPRA-123')
             ->setDelayed(false)
             ->setPreAuthorization(false)
             ->setNumberInstallments(2)
@@ -36,10 +36,10 @@ final class AuthorizeTest extends TestBase
             ->setTransactionType(Credit::TRANSACTION_TYPE_INSTALL_NO_INTEREST)
             ->card($tokenCard)
             ->setBrand(Card::BRAND_MASTERCARD)
-            ->setExpirationMonth("12")
+            ->setExpirationMonth('12')
             ->setExpirationYear(date('y') + 1)
-            ->setCardholderName("Jax Teller")
-            ->setSecurityCode("123");
+            ->setCardholderName('Jax Teller')
+            ->setSecurityCode('123');
 
         $response = $this->getnetService()->authorize($transaction);
 
@@ -79,8 +79,8 @@ final class AuthorizeTest extends TestBase
         // Add payment
         $transaction->credit()
             ->setAuthenticated(false)
-            ->setDynamicMcc("1799")
-            ->setSoftDescriptor("LOJA*TESTE*COMPRA-123")
+            ->setDynamicMcc('1799')
+            ->setSoftDescriptor('LOJA*TESTE*COMPRA-123')
             ->setDelayed(false)
             ->setPreAuthorization(false)
             ->setNumberInstallments(2)
@@ -88,10 +88,10 @@ final class AuthorizeTest extends TestBase
             ->setTransactionType(Credit::TRANSACTION_TYPE_INSTALL_NO_INTEREST)
             ->card($cardToken)
             ->setBrand(Card::BRAND_MASTERCARD)
-            ->setExpirationMonth("12")
+            ->setExpirationMonth('12')
             ->setExpirationYear(date('y') + 1)
-            ->setCardholderName("Jax Teller")
-            ->setSecurityCode("123");
+            ->setCardholderName('Jax Teller')
+            ->setSecurityCode('123');
 
         $response = $this->getnetService()->authorize($transaction);
 

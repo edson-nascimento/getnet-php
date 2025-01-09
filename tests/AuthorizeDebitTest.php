@@ -1,14 +1,14 @@
 <?php
+
 namespace Tests;
 
-use Getnet\API\Card;
 use Getnet\API\AuthorizeResponse;
+use Getnet\API\Card;
 use Getnet\API\Transaction;
 use PHPUnit\Framework\Attributes\Group;
 
 final class AuthorizeDebitTest extends TestBase
 {
-
     #[Group('e2e')]
     public function testAuthorizeDebitCreate(): AuthorizeResponse
     {
@@ -16,22 +16,22 @@ final class AuthorizeDebitTest extends TestBase
         $transaction->setAmount(8579.96);
 
         // Generate token card
-        $tokenCard = new \Getnet\API\Token("5155901222280001", $transaction->getCustomer()->getCustomerId(), $this->getnetService());
+        $tokenCard = new \Getnet\API\Token('5155901222280001', $transaction->getCustomer()->getCustomerId(), $this->getnetService());
 
         // Add payment
         $transaction->debit()
-            ->setCardholderMobile("5551999887766")
-            ->setDynamicMcc("1799")
-            ->setSoftDescriptor("LOJA*TESTE*COMPRA-123")
+            ->setCardholderMobile('5551999887766')
+            ->setDynamicMcc('1799')
+            ->setSoftDescriptor('LOJA*TESTE*COMPRA-123')
             ->card($tokenCard)
             ->setBrand(Card::BRAND_MASTERCARD)
-            ->setExpirationMonth("12")
-            ->setExpirationYear(date('y')+1)
-            ->setCardholderName("Jax Teller")
-            ->setSecurityCode("123");
+            ->setExpirationMonth('12')
+            ->setExpirationYear(date('y') + 1)
+            ->setCardholderName('Jax Teller')
+            ->setSecurityCode('123');
 
         $response = $this->getnetService()->authorize($transaction);
-        
+
         if (!($response instanceof AuthorizeResponse)) {
             throw new \Exception($response->getResponseJSON());
         }

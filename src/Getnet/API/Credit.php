@@ -1,33 +1,29 @@
 <?php
+
 namespace Getnet\API;
 
 use Getnet\API\Exception\GetnetException;
 
-/**
- * Class Credit
- *
- * @package Getnet\API
- */
 class Credit implements \JsonSerializable
 {
     use TraitEntity;
 
     // Pagamento completo à vista
-    const TRANSACTION_TYPE_FULL = "FULL";
+    public const TRANSACTION_TYPE_FULL = 'FULL';
 
     // Pagamento parcelado sem juros
-    const TRANSACTION_TYPE_INSTALL_NO_INTEREST = "INSTALL_NO_INTEREST";
+    public const TRANSACTION_TYPE_INSTALL_NO_INTEREST = 'INSTALL_NO_INTEREST';
 
     // Pagamento parcelado com juros
-    const TRANSACTION_TYPE_INSTALL_WITH_INTEREST = "INSTALL_WITH_INTEREST";
+    public const TRANSACTION_TYPE_INSTALL_WITH_INTEREST = 'INSTALL_WITH_INTEREST';
 
-    const COF_ONE_CLICK = 'ONE_CLICK';
+    public const COF_ONE_CLICK = 'ONE_CLICK';
 
-    const COF_ONE_CLICK_PAYMENT = 'ONE_CLICK_PAYMENT';
+    public const COF_ONE_CLICK_PAYMENT = 'ONE_CLICK_PAYMENT';
 
-    const COF_RECURRING = 'RECURRING';
+    public const COF_RECURRING = 'RECURRING';
 
-    const COF_RECURRING_PAYMENT = 'RECURRING_PAYMENT';
+    public const COF_RECURRING_PAYMENT = 'RECURRING_PAYMENT';
 
     private $authenticated;
 
@@ -51,22 +47,14 @@ class Credit implements \JsonSerializable
 
     // Tipo do COF (Credential On File).
     private $credentials_on_file_type;
-    
+
     private $transaction_id;
 
-    /**
-     *
-     * @return mixed
-     */
     public function getAuthenticated()
     {
         return $this->authenticated;
     }
 
-    /**
-     *
-     * @param mixed $authenticated
-     */
     public function setAuthenticated($authenticated)
     {
         $this->authenticated = $authenticated;
@@ -74,19 +62,11 @@ class Credit implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getDelayed()
     {
         return $this->delayed;
     }
 
-    /**
-     *
-     * @param mixed $delayed
-     */
     public function setDelayed($delayed)
     {
         $this->delayed = $delayed;
@@ -94,19 +74,11 @@ class Credit implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getDynamicMcc()
     {
         return $this->dynamic_mcc;
     }
 
-    /**
-     *
-     * @param mixed $dynamic_mcc
-     */
     public function setDynamicMcc($dynamic_mcc)
     {
         $this->dynamic_mcc = (int) $dynamic_mcc;
@@ -114,19 +86,11 @@ class Credit implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getNumberInstallments()
     {
         return $this->number_installments;
     }
 
-    /**
-     *
-     * @param mixed $number_installments
-     */
     public function setNumberInstallments($number_installments)
     {
         $this->number_installments = (int) $number_installments;
@@ -134,19 +98,11 @@ class Credit implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getPreAuthorization()
     {
         return $this->pre_authorization;
     }
 
-    /**
-     *
-     * @param mixed $pre_authorization
-     */
     public function setPreAuthorization($pre_authorization)
     {
         $this->pre_authorization = $pre_authorization;
@@ -154,19 +110,11 @@ class Credit implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getSaveCardData()
     {
         return $this->save_card_data;
     }
 
-    /**
-     *
-     * @param mixed $save_card_data
-     */
     public function setSaveCardData($save_card_data)
     {
         $this->save_card_data = $save_card_data;
@@ -174,19 +122,11 @@ class Credit implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getSoftDescriptor()
     {
         return $this->soft_descriptor;
     }
 
-    /**
-     *
-     * @param mixed $soft_descriptor
-     */
     public function setSoftDescriptor($soft_descriptor)
     {
         $this->soft_descriptor = (string) $soft_descriptor;
@@ -194,19 +134,11 @@ class Credit implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getTransactionType()
     {
         return $this->transaction_type;
     }
 
-    /**
-     *
-     * @param mixed $transaction_type
-     */
     public function setTransactionType($transaction_type)
     {
         $this->transaction_type = (string) $transaction_type;
@@ -215,8 +147,6 @@ class Credit implements \JsonSerializable
     }
 
     /**
-     *
-     * @param Token $token
      * @return Card
      */
     public function card(Token $token)
@@ -229,7 +159,6 @@ class Credit implements \JsonSerializable
     }
 
     /**
-     *
      * @return Card
      */
     public function getCard()
@@ -237,10 +166,6 @@ class Credit implements \JsonSerializable
         return $this->card;
     }
 
-    /**
-     *
-     * @param Card $card
-     */
     public function setCard(Card $card)
     {
         $this->card = $card;
@@ -248,19 +173,11 @@ class Credit implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getCardholderMobile()
     {
         return $this->cardholder_mobile;
     }
 
-    /**
-     *
-     * @param mixed $cardholder_mobile
-     */
     public function setCardholderMobile($cardholder_mobile)
     {
         $this->cardholder_mobile = (string) $cardholder_mobile;
@@ -268,49 +185,33 @@ class Credit implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getCredentialsOnFileType()
     {
         return $this->credentials_on_file_type;
     }
 
-    /**
-     *
-     * @param mixed $credentials_on_file_type
-     */
     public function setCredentialsOnFileType($credentials_on_file_type)
     {
         if (!in_array($credentials_on_file_type, [
-            static::COF_ONE_CLICK, static::COF_ONE_CLICK_PAYMENT, static::COF_RECURRING, static::COF_RECURRING_PAYMENT
-        ]))
+            static::COF_ONE_CLICK, static::COF_ONE_CLICK_PAYMENT, static::COF_RECURRING, static::COF_RECURRING_PAYMENT,
+        ])) {
             throw new GetnetException('Escolha uma forma de recorrência válida');
+        }
 
         $this->credentials_on_file_type = $credentials_on_file_type;
 
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getTransactionId()
     {
         return $this->transaction_id;
     }
 
-    /**
-     *
-     * @param mixed $transaction_id
-     */
     public function setTransactionId($transaction_id)
     {
         $this->transaction_id = (string) $transaction_id;
 
         return $this;
     }
-
 }

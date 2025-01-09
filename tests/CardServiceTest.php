@@ -1,14 +1,14 @@
 <?php
+
 namespace Tests;
 
-use Getnet\API\Token;
 use Getnet\API\Card;
-use PHPUnit\Framework\Attributes\Group;
+use Getnet\API\Token;
 use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Group;
 
 final class CardServiceTest extends TestBase
 {
-
     #[Group('e2e')]
     public function testCardToken(): Token
     {
@@ -32,10 +32,10 @@ final class CardServiceTest extends TestBase
 
         $card = new Card($cardToken);
         $card->setBrand(Card::BRAND_MASTERCARD)
-            ->setExpirationMonth("12")
+            ->setExpirationMonth('12')
             ->setExpirationYear(date('y') + 1)
-            ->setCardholderName("Jax Teller")
-            ->setSecurityCode("123")
+            ->setCardholderName('Jax Teller')
+            ->setSecurityCode('123')
             ->setCustomerId($cardToken->getCustomerId());
 
         $tokenResponse = $cardService->saveCard($card);

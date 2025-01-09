@@ -1,14 +1,9 @@
 <?php
+
 namespace Getnet\API;
 
-/**
- * Class PixResponse
- *
- * @package Getnet\API
- */
 class PixResponse extends BaseResponse
 {
-
     protected $transaction_id;
 
     protected $qr_code;

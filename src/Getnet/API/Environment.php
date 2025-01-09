@@ -1,20 +1,13 @@
 <?php
+
 namespace Getnet\API;
 
-/**
- * Class Environment
- *
- * @package Getnet\API
- */
 class Environment
 {
-
     private $api;
 
     /**
-     *
      * @param string $api
-     *
      */
     private function __construct($api)
     {
@@ -22,7 +15,6 @@ class Environment
     }
 
     /**
-     *
      * @return Environment
      */
     public static function sandbox()
@@ -31,7 +23,6 @@ class Environment
     }
 
     /**
-     *
      * @return Environment
      */
     public static function homolog()
@@ -40,7 +31,6 @@ class Environment
     }
 
     /**
-     *
      * @return Environment
      */
     public static function production()
@@ -49,7 +39,7 @@ class Environment
     }
 
     /**
-     * Gets the environment's Api URL
+     * Gets the environment's Api URL.
      *
      * @return string the Api URL
      */

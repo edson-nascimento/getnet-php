@@ -1,28 +1,28 @@
 <?php
+
 namespace Tests;
 
-use Getnet\API\Transaction;
-use Getnet\API\BoletoRespose;
 use Getnet\API\Boleto;
+use Getnet\API\BoletoRespose;
+use Getnet\API\Transaction;
 use PHPUnit\Framework\Attributes\Group;
 
 final class BoletoTest extends TestBase
 {
-
     #[Group('e2e')]
     public function testBoletoCreate(): BoletoRespose
     {
         $transaction = $this->generateMockTransaction(false);
         $transaction->setAmount(1096.88);
 
-        $transaction->boleto("000001946598")
-            ->setDocumentNumber("170500000019763")
-            ->setExpirationDate(date('d/m/Y', strtotime("+2 days")))
+        $transaction->boleto('000001946598')
+            ->setDocumentNumber('170500000019763')
+            ->setExpirationDate(date('d/m/Y', strtotime('+2 days')))
             ->setProvider(Boleto::PROVIDER_SANTANDER)
-            ->setInstructions("Não receber após o vencimento");
+            ->setInstructions('Não receber após o vencimento');
 
         $response = $this->getnetService()->boleto($transaction);
-        
+
         if (!($response instanceof BoletoRespose)) {
             throw new \Exception($response->getResponseJSON());
         }

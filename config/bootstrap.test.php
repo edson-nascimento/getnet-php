@@ -1,4 +1,5 @@
 <?php
+
 use Getnet\API\Environment;
 
 $ROOTDIR = dirname(__DIR__);
@@ -9,8 +10,8 @@ require_once $ROOTDIR . '/vendor/autoload.php';
 require_once $ROOTDIR . '/config/env.test.php';
 
 /**
- *
  * @return \Getnet\API\Getnet
+ *
  * @throws Exception
  */
 function getnetServiceTest()

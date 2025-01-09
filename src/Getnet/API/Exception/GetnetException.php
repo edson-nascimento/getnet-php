@@ -1,5 +1,7 @@
 <?php
-namespace  Getnet\API\Exception;
+
+namespace Getnet\API\Exception;
 
 class GetnetException extends \RuntimeException
-{}
+{
+}

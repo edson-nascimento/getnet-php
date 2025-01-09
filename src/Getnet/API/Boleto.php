@@ -1,16 +1,12 @@
 <?php
+
 namespace Getnet\API;
 
-/**
- * Class Boleto
- *
- * @package Getnet\API
- */
 class Boleto implements \JsonSerializable
 {
     use TraitEntity;
 
-    const PROVIDER_SANTANDER = "santander";
+    public const PROVIDER_SANTANDER = 'santander';
 
     private $our_number;
 
@@ -23,9 +19,7 @@ class Boleto implements \JsonSerializable
     private $provider;
 
     /**
-     *
      * @param string|null $our_number
-     *
      */
     public function __construct($our_number = null)
     {
@@ -34,18 +28,12 @@ class Boleto implements \JsonSerializable
         }
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getOurNumber()
     {
         return $this->our_number;
     }
 
     /**
-     *
-     * @param mixed $our_number
      * @return Boleto
      */
     public function setOurNumber($our_number)
@@ -55,18 +43,12 @@ class Boleto implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getDocumentNumber()
     {
         return $this->document_number;
     }
 
     /**
-     *
-     * @param mixed $document_number
      * @return Boleto
      */
     public function setDocumentNumber($document_number)
@@ -76,18 +58,12 @@ class Boleto implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getExpirationDate()
     {
         return $this->expiration_date;
     }
 
     /**
-     *
-     * @param mixed $expiration_date
      * @return Boleto
      */
     public function setExpirationDate($expiration_date)
@@ -97,18 +73,12 @@ class Boleto implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getInstructions()
     {
         return $this->instructions;
     }
 
     /**
-     *
-     * @param mixed $instructions
      * @return Boleto
      */
     public function setInstructions($instructions)
@@ -118,18 +88,12 @@ class Boleto implements \JsonSerializable
         return $this;
     }
 
-    /**
-     *
-     * @return mixed
-     */
     public function getProvider()
     {
         return $this->provider;
     }
 
     /**
-     *
-     * @param mixed $provider
      * @return Boleto
      */
     public function setProvider($provider)

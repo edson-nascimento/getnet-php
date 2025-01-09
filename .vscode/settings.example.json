@@ -1,0 +1,34 @@
+{
+  "files.eol": "\n",
+  "eslint.run": "onSave",
+  "eslint.format.enable": true,
+  "editor.tabSize": 2,
+  "php-cs-fixer.executablePath": "${workspaceFolder}/vendor/bin/php-cs-fixer",
+  "[php]": {
+    "editor.defaultFormatter": "junstyle.php-cs-fixer",
+    "editor.formatOnSave": false,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.trimAutoWhitespace": true,
+    "editor.bracketPairColorization.enabled": true
+  },
+  "php.format.codeStyle": "PSR-12",
+  "php.debug.port": 9000,
+  "editor.rulers": [
+    150
+  ],
+  "files.insertFinalNewline": true,
+  "files.readonlyInclude": {
+    "**/vendor/**/*": true
+  },
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[json][jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
+}
